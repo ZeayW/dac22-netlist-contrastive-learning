@@ -56,11 +56,11 @@ Python环境激活：
 步骤：以预测输出边界的模型为例。
 1.	切换到目录src，首先执行如下命令初始化模型/生成数据集（如果还未生成）。其中num_input用以指定要生成的数据集, loss_thred指定停止训练的损失阈值，tao为对比学习损失函数里的超参数，batch_size为训练批大小，model_saving_dir指定模型存放位置，datapath指定数据集位置。
 
-		python train_gcl.py  --datapath PATH1 --num_input x --loss_thred lt --tao t --batch_size bs --model_saving_dir PATH2 --preprocess
+		python train_gcl.py  --datapath PATH1 --num_input X --loss_thred L --tao T --batch_size BS --model_saving_dir PATH2 --preprocess
 
 2.	然后执行如下命令即可开始训练，其中start，end用于指定训练的curriculum环境 （用于训练的数据集范围）
 
-		python train_gcl.py --loss_thred 0.01 --tao 0.065  --datapath PATH1 --model_saving_dir PATH2 --start i1 x1 --end i2 x2
+		python train_gcl.py --loss_thred L --tao T  --datapath PATH1 --model_saving_dir PATH2 --start i1 x1 --end i2 x2
 	注：训练脚本有多个参数，可以使用如下命令查看：
 		python train_gcl.py --help
 
@@ -73,7 +73,7 @@ Python环境激活：
 步骤：以预测输出边界的模型为例。
 1.	切换到目录src，首先执行如下命令初始化模型/生成数据集（如果还未生成）。其中PATH1是数据集所在路径，PATH2是预训练模型所在路径，PATH3是微调模型保存路径, tran_percent指定用于训练的数据比例。
 
-		python train_ft.py --pre_train --function --label out --datapath PATH1 --pre_model_dir PATH2 --model_saving_dir PATH3 --in_nlayers 3 --out_nlayers 0 --train_percent x --preprocess
+		python train_ft.py --pre_train --function --label out --datapath PATH1 --pre_model_dir PATH2 --model_saving_dir PATH3 --in_nlayers N1 --out_nlayers N2 --train_percent X --preprocess
 2.	然后执行如下命令即可开始训练：
 
 		python train_ft.py --label out --datapath PATH1 --model_saving_dir PATH2
