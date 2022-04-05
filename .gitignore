@@ -34,7 +34,6 @@ dc/
 *.log
 *.mr
 *.pvl
-*.tcl
 *.swp
 *.sh
 *.svf
