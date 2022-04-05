@@ -25,7 +25,7 @@ Python环境激活：
 		python generate_truthtable.py --num_input x
 4.	切换到目录src，执行如下命令：
 
-		python train_gcl.py --num_input x --preprocess
+		python train_gcl.py --datapath ../data/gcl --num_input x --preprocess
 
 二. 下游任务数据集生成
 
@@ -56,7 +56,7 @@ Python环境激活：
 步骤：以预测输出边界的模型为例。
 1.	切换到目录src，首先执行如下命令初始化模型/生成数据集（如果还未生成）。其中num_input用以指定要生成的数据集, loss_thred指定停止训练的损失阈值，tao为对比学习损失函数里的超参数，batch_size为训练批大小，model_saving_dir指定模型存放位置，datapath指定数据集位置。
 
-		python train_gcl.py  --datapath PATH1 --num_input 7 --loss_thred 0.01 --tao 0.065 --batch_size 350 --model_saving_dir PATH2 --preprocess
+		python train_gcl.py  --datapath PATH1 --num_input x --loss_thred lt --tao t --batch_size bs --model_saving_dir PATH2 --preprocess
 
 2.	然后执行如下命令即可开始训练，其中start，end用于指定训练的curriculum环境 （用于训练的数据集范围）
 

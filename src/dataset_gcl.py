@@ -74,7 +74,7 @@ class Dataset_gcl(DGLDataset):
         max_depth = 0
         options = get_options()
         start_nid = 0
-        self.POs = {}
+        self.POs = []
 
         self.aug_graphs = [[],[],[]]
         self.len = 0
@@ -82,7 +82,7 @@ class Dataset_gcl(DGLDataset):
 
         start_nid = 0
         aug_start_nids = [0,0,0]
-        self.aug_POs = [{},{},{}]
+        self.aug_POs = [[],[],[]]
         # with open(os.path.join(self.datapath,'split{}.pkl'.format(self.split)),'rb') as f:
         #     filelist = pickle.load(f)
         # print(len(filelist))
@@ -101,7 +101,7 @@ class Dataset_gcl(DGLDataset):
                 print('empty...')
                 continue
             original_graph, original_PO, original_depth = parse_single_file(nodes, edges, output_node)
-            self.POs[original_PO+start_nid] = original_depth
+            self.POs.append(original_PO+start_nid)
             #PO.append((original_PO+start_nid,original_depth))
             self.graphs.append(original_graph)
             start_nid += original_graph.number_of_nodes()
@@ -113,7 +113,7 @@ class Dataset_gcl(DGLDataset):
                     print('generating positive sample{}, num replaced = {}'.format(i,num2replace))
                     new_nodes, new_edges,output_nid = transform(nodes, edges, output_node,num2replace,options)
                     new_graph, new_PO, new_depth = parse_single_file(new_nodes, new_edges, output_nid)
-                    self.aug_POs[num2replace-1][new_PO+aug_start_nids[num2replace-1]] = new_depth
+                    self.aug_POs[num2replace-1].append(new_PO+aug_start_nids[num2replace-1])
                     self.aug_graphs[num2replace-1].append(new_graph)
                     aug_start_nids[num2replace-1] += new_graph.number_of_nodes()
                     if new_depth>aug_max_depth[num2replace-1]:
