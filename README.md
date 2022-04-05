@@ -15,8 +15,20 @@ Python环境激活：
 ## 数据集生成
 一. 对比学习数据集生成
 
+输入： 无
+
+输出：生成电路的有向无环图（DAG）表示形式（dgl graph），并以pkl文件的格式进行存储。
+
+步骤：
+1.	切换到目录truthtables, 执行如下脚本。其中x用于指定生成的真值表网表的输入个数。
+
+		python generate_truthtable.py --num_input x
+4.	切换到目录src，执行如下命令：
+
+		python train_gcl.py --num_input x --preprocess
 
 二. 下游任务数据集生成
+
 输入：测试电路RTL Design文件（如verilog）
 
 输出：测试电路的有向无环图（DAG）表示形式（dgl graph），并以pkl文件的格式进行存储。
