@@ -35,7 +35,6 @@ dc/
 *.mr
 *.pvl
 *.swp
-*.sh
 *.svf
 *.alib
 *.rpt
