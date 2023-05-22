@@ -47,3 +47,5 @@ test.py
 test2.py
 
 *.pyc
+
+*.docx
